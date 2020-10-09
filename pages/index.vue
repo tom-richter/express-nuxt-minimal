@@ -5,30 +5,20 @@
       <h1 class="title">
         express-nuxt-minimal
       </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <h2>Data from API: {{ test }}</h2>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  async asyncData ({ $http }) {
+    const test = await $http.$get('/api/test')
+    return {
+      test
+    }
+  }
+}
 </script>
 
 <style>
